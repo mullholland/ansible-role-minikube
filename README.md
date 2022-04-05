@@ -85,7 +85,7 @@ The machine needs to be prepared in CI this is done using `molecule/default/prep
       ansible.builtin.package:
         name:
           - "conntrack"  # Kubernetes 1.23.3 requires conntrack to be installed in root's path
-          - "iproute2"  # dependenciy minikube
+          - "iproute"  # dependenciy minikube
           - "ethtool"  # dependenciy minikube
           - "socat"  # dependenciy minikube
         state: present
