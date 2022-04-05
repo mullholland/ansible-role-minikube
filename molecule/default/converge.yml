@@ -1,0 +1,30 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  gather_facts: true
+
+  # pre_tasks:
+  #   # create local user
+  #   - name: Create system group
+  #     ansible.builtin.group:
+  #       name: "minikube"
+  #       state: present
+
+  #   - name: Create system user
+  #     ansible.builtin.user:
+  #       name: "minikube"
+  #       group: "minikube"
+  #       shell: "/bin/bash"
+  #       state: present
+  roles:
+    - role: "ansible-role-minikube"
+
+    # tasks:
+    #   # start minikube
+    #   - name: start minikube
+    #     ansible.builtin.command:
+    #       cmd: "minikube start"
+    #       creates: nothing
+    #     become: yes
+    #     become_user: "minikube"

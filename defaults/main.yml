@@ -1,0 +1,12 @@
+---
+# Install minikube for local usage.
+minikube_version: "v1.25.2"
+minikube_os: "linux"
+minikube_arch: "amd64"
+
+minikube_mirror: "https://github.com/kubernetes/minikube/releases/download"
+minikube_install_dir: "/usr/bin"
+
+# `minikube start` should start as a non-root-user.
+# This should be an exising user on the Linux system.
+# https://minikube.sigs.k8s.io/docs/start/

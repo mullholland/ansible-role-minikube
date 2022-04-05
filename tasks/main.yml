@@ -1,0 +1,26 @@
+---
+
+- name: Include distribution specific variables
+  ansible.builtin.include_vars: "{{ item }}"
+  with_first_found:
+    - '{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
+    - '{{ ansible_distribution }}.yml'
+    - '{{ ansible_os_family }}.yml'
+    - '{{ ansible_system }}.yml'
+    - 'default.yml'
+
+- name: Include checksums
+  ansible.builtin.include_vars: "vars/checksums.yml"
+
+- name: downloading {{ minikube_url }}
+  ansible.builtin.get_url:
+    url: '{{ minikube_url }}'
+    dest: '{{ minikube_install_target }}'
+    checksum: '{{ minikube_checksum }}'
+    mode: 0755
+
+- name: linking {{ minikube_install_link }} to {{ minikube_install_target }}
+  ansible.builtin.file:
+    src: '{{ minikube_install_target }}'
+    dest: '{{ minikube_install_link }}'
+    state: link

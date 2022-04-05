@@ -1,0 +1,31 @@
+---
+- name: Prepare
+  hosts: all
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Install dependencies
+      ansible.builtin.package:
+        name:
+          - "conntrack"  # Kubernetes 1.23.3 requires conntrack to be installed in root's path
+          - "iproute2"  # dependenciy minikube
+          - "ethtool"  # dependenciy minikube
+          - "socat"  # dependenciy minikube
+        state: present
+      when:
+        - ansible_distribution in [ "RedHat", "CentOS", "Amazon", "Rocky", "AlmaLinux", "Fedora" ]
+
+    - name: Install dependencies
+      ansible.builtin.package:
+        name:
+          - "conntrack"  # Kubernetes 1.23.3 requires conntrack to be installed in root's path
+          - "iproute2"  # dependenciy minikube
+          - "ethtool"  # dependenciy minikube
+          - "socat"  # dependenciy minikube
+        state: present
+      when:
+        - ansible_os_family == "Debian"
+
+  roles:
+    - role: mullholland.docker
