@@ -92,8 +92,9 @@ The machine needs to be prepared in CI this is done using `molecule/default/prep
       when:
         - ansible_os_family == "Debian"
 
-  roles:
-    - role: mullholland.docker
+# Possible driver for local installation
+#   roles:
+#     - role: mullholland.docker
 ```
 
 

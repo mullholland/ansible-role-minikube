@@ -27,5 +27,6 @@
       when:
         - ansible_os_family == "Debian"
 
-  roles:
-    - role: mullholland.docker
+# Possible driver for local installation
+#   roles:
+#     - role: mullholland.docker
