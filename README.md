@@ -74,9 +74,9 @@ The machine needs to be prepared in CI this is done using `molecule/default/prep
       ansible.builtin.package:
         name:
           - "conntrack"  # Kubernetes 1.23.3 requires conntrack to be installed in root's path
-          - "iproute2"  # dependenciy minikube
-          - "ethtool"  # dependenciy minikube
-          - "socat"  # dependenciy minikube
+          - "iproute"  # minikube dependency
+          - "ethtool"  # minikube dependency
+          - "socat"  # minikube dependency
         state: present
       when:
         - ansible_distribution in [ "RedHat", "CentOS", "Amazon", "Rocky", "AlmaLinux", "Fedora" ]
@@ -85,15 +85,16 @@ The machine needs to be prepared in CI this is done using `molecule/default/prep
       ansible.builtin.package:
         name:
           - "conntrack"  # Kubernetes 1.23.3 requires conntrack to be installed in root's path
-          - "iproute2"  # dependenciy minikube
-          - "ethtool"  # dependenciy minikube
-          - "socat"  # dependenciy minikube
+          - "iproute2"  # minikube dependency
+          - "ethtool"  # minikube dependency
+          - "socat"  # minikube dependency
         state: present
       when:
         - ansible_os_family == "Debian"
 
-  roles:
-    - role: mullholland.docker
+# Possible driver for local installation
+#   roles:
+#     - role: mullholland.docker
 ```
 
 
@@ -112,7 +113,6 @@ This role has been tested on these [container images](https://hub.docker.com/u/m
 -   [centos7](https://hub.docker.com/r/mullholland/docker-molecule-centos7)
 -   [centos-stream8](https://hub.docker.com/r/mullholland/docker-molecule-centos-stream8)
 -   [centos-stream9](https://hub.docker.com/r/mullholland/docker-molecule-centos-stream9)
--   [ubi8](https://hub.docker.com/r/mullholland/docker-molecule-ubi8)
 -   [fedora34](https://hub.docker.com/r/mullholland/docker-molecule-fedora34)
 -   [fedora35](https://hub.docker.com/r/mullholland/docker-molecule-fedora35)
 -   [amazonlinux](https://hub.docker.com/r/mullholland/docker-molecule-amazonlinux)
