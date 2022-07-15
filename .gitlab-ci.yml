@@ -9,6 +9,7 @@ stages:
   - "default-previous"
   - "default-current"
 
+
 variables:
   DOCKER_HOST: "tcp://docker:2375"
   PY_COLORS: 1
