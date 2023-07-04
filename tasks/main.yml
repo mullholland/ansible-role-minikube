@@ -19,7 +19,7 @@
     checksum: '{{ minikube_checksum }}'
     mode: 0755
 
-- name: linking {{ minikube_install_link }} to {{ minikube_install_target }}
+- name: "creating symlink to {{ minikube_install_target }}"
   ansible.builtin.file:
     src: '{{ minikube_install_target }}'
     dest: '{{ minikube_install_link }}'
