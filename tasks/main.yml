@@ -12,14 +12,14 @@
 - name: Include checksums
   ansible.builtin.include_vars: "vars/checksums.yml"
 
-- name: downloading {{ minikube_url }}
+- name: "Downloading {{ minikube_url }}"
   ansible.builtin.get_url:
     url: '{{ minikube_url }}'
     dest: '{{ minikube_install_target }}'
     checksum: '{{ minikube_checksum }}'
     mode: 0755
 
-- name: "creating symlink to {{ minikube_install_target }}"
+- name: "Creating symlink to {{ minikube_install_target }}"
   ansible.builtin.file:
     src: '{{ minikube_install_target }}'
     dest: '{{ minikube_install_link }}'

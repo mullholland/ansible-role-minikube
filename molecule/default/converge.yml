@@ -1,7 +1,6 @@
 ---
 - name: Converge
   hosts: all
-  become: true
   gather_facts: true
 
   # pre_tasks:
@@ -18,7 +17,7 @@
   #       shell: "/bin/bash"
   #       state: present
   roles:
-    - role: "ansible-role-minikube"
+    - role: "{{ lookup('env', 'MOLECULE_PROJECT_DIRECTORY') }}"
 
     # tasks:
     #   # start minikube
